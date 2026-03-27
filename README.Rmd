@@ -1,0 +1,25 @@
+---
+title: "README"
+author: "Joe Matthews"
+date: "2026-03-24"
+output: html_document
+---
+  
+  The RAPTOR scheme evaluation app 
+
+## Data Input
+
+The app takes 2 files as input: the reference data and treated data.
+
+Each data file contains a site ID column as well as covariate information for use in the APM, these can be anything but typically include things like speed limit, traffic flow, road class etc.
+The reference data file contains a single column corresponding to collision counts. The treated data file contains 2 columns corresponding to collision counts before and after treatment is applied.
+
+In the data input section, the user selects the ID and collision count columns from each dataset. They then select which other variables they would like to include in the APM, as well as indicating any variables that should be treated as categorical/factor variables.
+
+## Analysis
+
+The model then performs a Full Bayesian before and after scheme evaluation analysis (assuming Gamma priors) on the treated sites using the reference sites to fit the APM and estimate the beta coefficients. The user has the option of specifying how many posterior samples they would like to draw.
+
+## Results
+
+The user is presented with a results table where each row corresponds to a treated site and includes: the raw change in collisions (collisions after treatment - collisions before), as well as the change due to RTM (posterior mean from MCMC - collisions before) and change due to treatment (collisions after treatment - posterior mean from MCMC). These results are also presented in bar plot form.
